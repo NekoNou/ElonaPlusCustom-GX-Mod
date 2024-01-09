@@ -1,0 +1,19 @@
+{
+    "Lua.diagnostics.globals": [
+        "LoadMod",
+        "QuickAccess",
+        "playerid",
+        "Hsp",
+        "fmode",
+        "ModInfo",
+        "ModName",
+        "LoadSrc",
+        "mid",
+        "inv_getheader",
+        "invhead",
+        "invrange",
+        "area",
+        "filemod",
+        "cdata"
+    ]
+}

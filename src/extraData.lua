@@ -33,7 +33,7 @@ end
 
 local hasExtraData = function(dataType, modName, page)
     if (saveDir == nil) then
-        error("EXTRA SAVE DATA ERROR: Save not loaded.")
+        return false
     end
     if (not data[dataType]) then
         return false
@@ -184,6 +184,9 @@ doFmode[8] = function()
     saveData(EXTRA_CDATA)
     saveData(EXTRA_INV)
 end
+doFmode[9] = function()
+    RemoveDir("save\\" .. playerid[0] .. "\\mod")
+end
 doFmode[10] = function()
     ExtraData.data = {}
     data = ExtraData.data
@@ -209,6 +212,8 @@ Hsp.hookGosub(SHOP_RESTOCK, function()
 end)
 
 Hsp.hookGosub(GAME_SAVE, function()
+    initExtraSaveData()
+
     saveData(EXTRA_MAP_CDATA .. mid[0])
     saveData(EXTRA_MAP_INV .. mid[0])
 

@@ -39,18 +39,24 @@ IsFileExist = function(filePath)
 end
 
 IsDirExist = function(dirPath)
-    return os.execute("cd " .. dirPath) == 0
+    return os.execute("cd \"" .. dirPath .. "\" 1>nul 2>nul") == 0
 end
 
 MakeDir = function(path)
     if (not IsDirExist(path)) then
-        os.execute("mkdir \"" .. path .. "\"")
+        os.execute("mkdir \"" .. path .. "\" 1>nul 2>nul")
+    end
+end
+
+RemoveDir = function(path)
+    if (IsDirExist(path)) then
+        os.execute("rd \"" .. path .. "\" 1>nul 2>nul")
     end
 end
 
 DeleteFile = function(path)
     if (IsFileExist(path)) then
-        os.execute("del \"" .. path .. "\"");
+        os.execute("del \"" .. path .. "\" 1>nul 2>nul");
     end
 end
 
